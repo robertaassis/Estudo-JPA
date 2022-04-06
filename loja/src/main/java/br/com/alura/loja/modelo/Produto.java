@@ -1,11 +1,15 @@
 package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 // entidade é uma classe que faz o mapeamento de uma tabela do banco de dados
@@ -23,7 +27,23 @@ public class Produto {
 	private String nome;
 	private String descricao;
 	private BigDecimal preco;
+	private LocalDate dataCadastro = LocalDate.now(); // pega a data atual sempre que criar o produto
 	
+	 // @Enumerated(EnumType.STRING) // coloco enumtype.string porque se eu colocar enumtype.original, ele vai colocar na tabela baseado na ordem do enum (int). 
+	/* Ex: no enum ta CELULARES, INFORMATICA, LIVROS. Se eu instanciasse um produto como CELULARES, ele salvaria na coluna como id 1, pq é o primeiro na ordem
+	 como eu coloquei STRING, ele salva na coluna como CELULARES (varchar) */
+	
+	@ManyToOne // eu só preciso colocar a cardinalidade. Como um produto só pode ter uma categoria e vários produtos podem ter a mesma categoria então é n:1
+	private Categoria categoria; /* nao preciso informar que categoria é uma chave estrangeira pois por ser do tipo Categoria, 
+	o JPA já acessa ela e ve que é de uma tabela diferente, então já entende o relacionamento dessas duas tabelas sozinho
+	ja que ta aqui como atributo, porem é de outro tipo e nesse outro tipo, é de outra tabela */
+	
+	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.preco = preco;
+		this.categoria = categoria;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -48,6 +68,19 @@ public class Produto {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
 	
 	
 
