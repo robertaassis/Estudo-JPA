@@ -15,6 +15,10 @@ public class Categoria {
 	private Long id;
 	private String nome;
 	
+	public Categoria() {
+		
+	}
+	
 	public Categoria(String nome) { // nao precisa do id pois é auto
 		this.nome = nome;
 	}

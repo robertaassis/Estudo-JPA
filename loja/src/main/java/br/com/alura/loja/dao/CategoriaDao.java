@@ -8,6 +8,7 @@ public class CategoriaDao {
 
 	private EntityManager em;
 
+
 	public CategoriaDao(EntityManager em) {
 		this.em = em;
 	}

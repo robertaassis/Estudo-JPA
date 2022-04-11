@@ -38,6 +38,12 @@ public class Produto {
 	o JPA já acessa ela e ve que é de uma tabela diferente, então já entende o relacionamento dessas duas tabelas sozinho
 	ja que ta aqui como atributo, porem é de outro tipo e nesse outro tipo, é de outra tabela */
 	
+	
+
+	public Produto() {
+		super();
+	}
+	
 	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
 		this.nome = nome;
 		this.descricao = descricao;

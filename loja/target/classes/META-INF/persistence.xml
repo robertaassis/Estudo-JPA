@@ -13,6 +13,7 @@
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 			<property name="hibernate.show_sql" value="true"/> <!-- mostra o que ta rodando no banco -->
+			<property name="hibernate.format_sql" value="true"/> <!-- formata o sql para ficar melhor pra visualizar -->
 			<property name="hibernate.hbm2ddl.auto" value="update"/> <!-- se nao tiver as tabelas das entidades criadas, cria e se houver alguma alteração posteriormente, atualiza -->
 		</properties>
 		
