@@ -78,6 +78,11 @@ public class ItemPedido {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
+
+	public BigDecimal getValor() {
+		// TODO Auto-generated method stub
+		return precoUnitario.multiply(new BigDecimal(quantidade)); // valor total é o preço unitario x quantos produtos desse ela ta pedindo
+	}
 	
 	
 	

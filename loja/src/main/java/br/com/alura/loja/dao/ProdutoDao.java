@@ -55,4 +55,6 @@ public class ProdutoDao {
 		return em.createQuery(jpql, BigDecimal.class).setParameter("nome", nome).getSingleResult(); // devolve um unico registro BigDecimal e nao lista o getSingleResult
 	}
 	
+	
+	
 }
